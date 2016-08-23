@@ -20,6 +20,16 @@
     = icon_map_tag(icons, "settings", ["icon-with-text"])
     = t("layouts.logged_in.settings")
 
+  - with_invite_link do
+    = link_to new_invitation_path do
+      = icon_map_tag(icons, "invite", ["icon-with-text"])
+      = t("header.invite")
+
+  - if @current_user && @current_community && @current_user.has_admin_rights?
+    = link_to admin_details_edit_path do
+      = icon_map_tag(icons, "admin", ["icon-with-text"])
+      = t("layouts.logged_in.admin")
+
   = link_to logout_path do
     = icon_map_tag(icons, "logout", ["icon-with-text"])
     = t("layouts.logged_in.logout")
